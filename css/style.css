@@ -1,0 +1,194 @@
+/* ================== RESET & BODY ================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(to bottom, #87cefa, #ffffff);
+  transition: background 1s ease;
+}
+
+/* 🎬 Nền countdown */
+.bg-countdown {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* 🎉 Nền sinh nhật */
+.bg-birthday {
+  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+}
+
+/* ================== LAYOUT ================== */
+.container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* ================== TEXT ================== */
+.text {
+  font-size: clamp(48px, 12vw, 96px);
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.wish {
+  font-size: clamp(16px, 4vw, 22px); /* 👈 nhỏ hẳn */
+  color: #fff;
+  text-align: center;
+  line-height: 1.8;
+  padding: 0 20px;
+  animation: fadeIn 1.2s ease forwards;
+  z-index: 10;
+}
+
+.final-text {
+  margin-top: 15px;
+  font-size: clamp(22px, 5vw, 30px); /* 👈 cỡ “Sinh nhật vui vẻ nhé!” */
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+
+/* ================== COMMON ================== */
+.hidden {
+  display: none;
+}
+
+/* ================== RAIN ================== */
+.rain {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.2) 2px,
+    transparent 2px,
+    transparent 20px
+  );
+  animation: rain 0.5s linear infinite;
+  z-index: 1;
+}
+
+/* ================== HEARTS ================== */
+.hearts-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.heart {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float 5s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -8px;
+}
+
+.heart::after {
+  left: -8px;
+}
+
+/* ================== PHOTO ================== */
+#photo {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+
+#photo img {
+  max-width: 80vw;
+  max-height: 60vh;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+/* ================== TAP SCREEN ================== */
+.tap {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(22px, 6vw, 32px);
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+  z-index: 999;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ================== ANIMATIONS ================== */
+@keyframes rain {
+  from { background-position: 0 0; }
+  to { background-position: 0 20px; }
+}
+
+@keyframes float {
+  from { bottom: 0; opacity: 1; }
+  to { bottom: 100%; opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.text, .final-text {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+#stageText {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
